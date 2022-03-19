@@ -1,42 +1,43 @@
 <template>
   <div>
     <div id="fullpage">
-      <div id="pagetips" style="border-bottom:1px solid rgb(28, 39, 58);">
-        <div class="topnav">
-          <div class="carl">
-            <div class="notice-list">
-              <div class="notice-item" v-for="(item,index) in FAQList">
-                <div class="cal_content">
-                  <span></span>
-                  <router-link target="_blank" :to="{path: '/announcement/' + item.id}">[ {{item.createTime}} ] {{strde(item.title)}}</router-link>
-                </div>
-              </div>
-            </div>
-            <div class="more">
-              <router-link to="/announcement/0" target="_blank">{{$t('common.more')}}</router-link>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+      <!--通知公告-->
+      <!--<div id="pagetips" style="border-bottom:1px solid rgb(28, 39, 58);">-->
+        <!--<div class="topnav">-->
+          <!--<div class="carl">-->
+            <!--<div class="notice-list">-->
+              <!--<div class="notice-item" v-for="(item,index) in FAQList">-->
+                <!--<div class="cal_content">-->
+                  <!--<span></span>-->
+                  <!--<router-link target="_blank" :to="{path: '/announcement/' + item.id}">[ {{item.createTime}} ] {{strde(item.title)}}</router-link>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="more">-->
+              <!--<router-link to="/announcement/0" target="_blank">{{$t('common.more')}}</router-link>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--Banner轮播图-->
       <div class="section" id="page1">
         <!-- <div v-if="lang==='简体中文'"> -->
-
         <div class="spin-wrap banner-panel">
-          <img style="height: 100%;" src="../../assets/images/bannerbg.png"></img>
-          <p style="text-align:center;font-size:40px;color:#fff;position:absolute;top: 70px;width:100%;letter-spacing:5px;text-shadow: 0px 0px 10px #000000;">{{$t("common.slogan")}}</p>
-          <p style="text-align:center;font-size:20px;color:#828ea1;position:absolute;top: 130px;width:100%;letter-spacing:2px;">{{$t("common.subslogan")}}</p>
+          <!--<img style="height: 100%;" src="../../assets/images/bannerbg.png"></img>-->
+          <!--<p style="text-align:center;font-size:40px;color:#fff;position:absolute;top: 70px;width:100%;letter-spacing:5px;text-shadow: 0px 0px 10px #000000;">{{$t("common.slogan")}}</p>-->
+          <!--<p style="text-align:center;font-size:20px;color:#828ea1;position:absolute;top: 130px;width:100%;letter-spacing:2px;">{{$t("common.subslogan")}}</p>-->
           <div class="activity-list" v-show="picShow">
             <div class="swiper-container" id="swiper_container">
               <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="(item,index) in picList">
                   <a v-if="item.linkUrl&&item.linkUrl!=' '&&item.linkUrl!='1'" :href="item.linkUrl" target="_blank">
                     <div class="activity-item">
-                      <img :src="item.url"></img>
+                      <img :src="item.url"/>
                     </div>
                   </a>
                   <div v-else class="activity-item">
-                    <img :src="item.url"></img>
+                    <img :src="item.url"/>
                   </div>
                 </div>
               </div>
@@ -45,184 +46,157 @@
           </div>
         </div>
       </div>
-      <div id="pagetips" style="background: #172636;">
-        <div class="agent-panel">
-          <div class="title">
-            <div class="gettingstart">{{$t('sectionPage.gettingstart')}}</div>
-            <div class="tips">{{$t('sectionPage.officialstart')}}</div>
+      <!--热门前五交易行情-->
+      <div class="hot">
+        <div class="container line">
+          <div class="left">
+            <div>BTCUSDT永续</div>
+            <div>43,510.2</div>
+            <div>≈￥276794.4833</div>
           </div>
-          <div class="agent-list">
-            <!--<router-link to="/helpdetail?cate=0&id=20&cateTitle=新手指南" target="_blank">-->
-              <div class="agent-item">
-                <div class="agent-img">
-                  <img src="../../assets/icon1/1.png"></img>
-                </div>
-                <div class="agent-detail">
-                  <p  class="agent-name">{{$t('sectionPage.oneminutebuy')}}</p>
-                  <p  class="agent-count">{{$t('sectionPage.oneminutebuytips')}}</p>
-                </div>
-              </div>
-            <!--</router-link>-->
-            <div class="agent-item">
-              <div class="agent-img">
-                <img src="../../assets/icon1/2.png"></img>
-              </div>
-              <!--<router-link to="/helplist?cate=2&cateTitle=交易指南" target="_blank">-->
-                <div class="agent-detail">
-                  <p  class="agent-name">{{$t('sectionPage.baseexchange')}}</p>
-                  <p  class="agent-count">{{$t('sectionPage.baseexchangetips')}}</p>
-                </div>
-              <!--</router-link>-->
-            </div>
-            <div class="agent-item">
-              <div class="agent-img">
-                <img src="../../assets/icon1/3.png"></img>
-              </div>
-              <!--<router-link to="/helplist?cate=6&cateTitle=基础入门" target="_blank">-->
-                <div class="agent-detail">
-                  <p  class="agent-name">{{$t('sectionPage.baseknow')}}</p>
-                  <p  class="agent-count">{{$t('sectionPage.baseknowtips')}}</p>
-                </div>
-              <!--</router-link>-->
-            </div>
-            <div class="agent-item">
-              <div class="agent-img">
-                <img src="../../assets/icon1/4.png"></img>
-              </div>
-              <!--<router-link to="/helpdetail?cate=0&id=28&cateTitle=新手指南" target="_blank">-->
-                <div class="agent-detail">
-                  <p  class="agent-name">{{$t('sectionPage.usersocial')}}</p>
-                  <p  class="agent-count">{{$t('sectionPage.usersocialtips')}}</p>
-                </div>
-              <!--</router-link>-->
-            </div>
+          <div class="right">
+            <div class="up">43,510.2</div>
+            <div>≈￥276794.4833</div>
+          </div>
+        </div>
+        <div class="container line">
+          <div class="left">
+            <div>BTCUSDT永续</div>
+            <div>43,510.2</div>
+            <div>≈￥276794.4833</div>
+          </div>
+          <div class="right">
+            <div class="up">43,510.2</div>
+            <div>≈￥276794.4833</div>
+          </div>
+        </div>
+        <div class="container line">
+          <div class="left">
+            <div>BTCUSDT永续</div>
+            <div>43,510.2</div>
+            <div>≈￥276794.4833</div>
+          </div>
+          <div class="right">
+            <div class="up">43,510.2</div>
+            <div>≈￥276794.4833</div>
+          </div>
+        </div>
+        <div class="container line">
+          <div class="left">
+            <div>BTCUSDT永续</div>
+            <div>43,510.2</div>
+            <div>≈￥276794.4833</div>
+          </div>
+          <div class="right">
+            <div class="down">43,510.2</div>
+            <div>≈￥276794.4833</div>
+          </div>
+        </div>
+        <div class="container line">
+          <div class="left">
+            <div>BTCUSDT永续</div>
+            <div>43,510.2</div>
+            <div>≈￥276794.4833</div>
+          </div>
+          <div class="right">
+            <div class="down">43,510.2</div>
+            <div>≈￥276794.4833</div>
           </div>
         </div>
       </div>
+
       <div style="width: 100%;background: #141e2c;display:none;">
         <router-link to="/announcement/118930" target="_blank" style="width: 100%;">
           <img src="https://bihuo.oss-ap-southeast-1.aliyuncs.com/bannerimg.png" style="width: 72%;margin-left: 14%;margin-top: 20px;">
         </router-link>
       </div>
-      <div class="section" style="padding: 0px 14%;padding-top:50px;background: #141e2c;">
-        <div ref="trendPanel" style="width:100%;border-top:1px solid #1e2834;border-left:1px solid #1e2834;border-right:1px solid #1e2834;text-align: center;padding: 50px 0 0 0;position: relative;">
-          <div style="position: absolute;top: 20px;left:20px;font-size: 20px;font-weight: bold;color:#828ea1;">BTC/USDT Trend</div>
-          <SvgIndex ref="svgIndexRef" style="margin-bottom: -5px;" :width="800" :height="150" :values="lineValues"></SvgIndex>
-          <div style="position:absolute;top:50px;left:20px;color:#828ea1;"><span class="lastest-price" style="font-size:40px;font-weight: normal;">{{trendData.close | fixed2}}</span><span style="font-weight: bold;">/USDT</span></div>
-
-          <div style="position: absolute;bottom: 10px;left:20px;color:#828ea1;">
-            <span>Highest price: {{trendData.highest}}</span>
-            <span style="margin-left:15px;">Lowest price: {{trendData.lowest}}</span>
-            <span style="margin-left:15px;">Change(24H): {{trendData.rose}}</span>
-            <span style="margin-left:15px;">Volume(24H): {{trendData.volume}}</span>
-          </div>
-        </div>
-      </div>
       <div class="section" id="page2">
-        <div class="page2nav">
-          <div class="board-title" style="display:inline-block;display: none;">{{$t('sectionPage.mainboard')}}  &nbsp; >>></div>
-          <ul class="brclearfix">
-            <li v-show="!(index==0&&!isLogin)" v-for="(item,index) in indexBtn" @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}" :key="index">{{item.text}}</li>
-            <li style="float:right;padding-right: 6px;"><Input search :placeholder="$t('common.searchplaceholder')" @on-change="seachInputChange" v-model="searchKey"/></li>
-          </ul>
-        </div>
+        <!--<div class="page2nav">-->
+          <!--<div class="board-title" style="display:inline-block;display: none;">{{$t('sectionPage.mainboard')}}  &nbsp; >>></div>-->
+          <!--<ul class="brclearfix">-->
+            <!--<li v-show="!(index==0&&!isLogin)" v-for="(item,index) in indexBtn" @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}" :key="index">{{item.text}}</li>-->
+            <!--<li style="float:right;padding-right: 6px;"><Input search :placeholder="$t('common.searchplaceholder')" @on-change="seachInputChange" v-model="searchKey"/></li>-->
+          <!--</ul>-->
+        <!--</div>-->
         <div class="ptjy">
-          <Table v-if="choseBtn==0" :columns="favorColumns" :data="dataIndex" class="tables" :disabled-hover="true" :loading="loading"  :no-data-text="$t('common.nodata')"></Table>
-          <Table v-if="choseBtn!=0" :columns="coins.columns" :data="dataIndex" class="tables" :disabled-hover="true" :loading="loading"  :no-data-text="$t('common.nodata')"></Table>
+          <Table v-if="choseBtn==0" :columns="favorColumns" :data="dataIndex" class="" :disabled-hover="true" :loading="loading"  :no-data-text="$t('common.nodata')"></Table>
+          <Table v-if="choseBtn!=0" :columns="coins.columns" :data="dataIndex" class="" :disabled-hover="true" :loading="loading"  :no-data-text="$t('common.nodata')"></Table>
 <!--
           <p v-if="choseBtn!=0" style="height:50px;line-height:50px;padding-left:10px;border-bottom:1px solid #26303d;font-size:14px;color:rgb(97, 119, 146);">创新版</p>
           <Table  v-if="choseBtn!=0" :columns="coins.columns" :data="dataIndex2" class="tables" :disabled-hover="true" :loading="loading"  :no-data-text="$t('common.nodata')"></Table>
 -->
         </div>
       </div>
-      <div class="section bg-light" id="page6">
-        <p class="title">{{$t('sectionPage.brandTitle')}}</p>
-        <p class="subtitle">{{$t('sectionPage.brandDetail')}}</p>
-        <div class="detail">{{$t('sectionPage.brandDesc1')}}</div>
-        <div class="detail">{{$t('sectionPage.brandDesc2')}}</div>
-        <div class="detail">{{$t('sectionPage.brandDesc3')}}</div>
-      </div>
-      <div class="section" id="page4">
-        <ul>
-          <li>
-            <div><img src="../../assets/icon1/5_1.jpg" alt=""></div>
-            <p style="margin-bottom: 10px;" class="title">{{$t('description.title1')}}</p>
-            <p style="margin-top: 2px; color: white">{{$t('description.message1')}}</p>
-          </li>
-          <li>
-            <div><img src="../../assets/icon1/6_1.jpg" alt=""></div>
-            <p style="margin-bottom: 10px;" class="title">{{$t('description.title2')}}</p>
-            <p style="margin-top: 2px; color: white">{{$t('description.message2')}}</p>
-          </li>
-          <li>
-            <div><img src="../../assets/icon1/7_1.jpg" alt=""></div>
-            <p style="margin-bottom: 10px;" class="title">{{$t('description.title3')}}</p>
-            <p style="margin-top: 2px; color: white">{{$t('description.message3')}}</p>
-          </li>
-          <li>
-            <div><img src="../../assets/icon1/8_1.jpg" alt=""></div>
-            <p style="margin-bottom: 10px;" class="title">{{$t('description.title4')}}</p>
-            <p style="margin-top: 2px; color: white">{{$t('description.message4')}}</p>
-          </li>
-        </ul>
-      </div>
 
-      <div class="section" id="page5">
-        <div class="phone_image"></div>
-		<div class="download-data">
-			<p class="tips-title">{{$t('description.download1')}}</p>
-			<p class="tips-tetx">
-        {{$t('description.download2')}}
-			</p>
-			<div class="code-cont">
-        <div>
-          <div class="code-item">
-            <vue-qr :text="androidDownloadUrl" :size="200"></vue-qr>
-          </div>
-          <div style="text-align: center;margin-top: 5px;">Android</div>
+      <div id="page3">
+        <div class="container">
+          <span>{{$t('home.text1')}}</span>
+          <span>{{$t('home.text2')}}</span>
+          <ul>
+            <li>
+              <div><img src="../../assets/icon1/home_1.png"/></div>
+              <span>{{$t('home.text3')}}</span>
+              <span>{{$t('home.text4')}}</span>
+              <span>{{$t('home.text5')}}</span>
+              <span>{{$t('home.text6')}}</span>
+            </li>
+            <li>
+              <div><img src="../../assets/icon1/home_2.png"/></div>
+              <span>{{$t('home.text7')}}</span>
+              <span>{{$t('home.text8')}}</span>
+              <span>{{$t('home.text9')}}</span>
+            </li>
+            <li>
+              <div><img src="../../assets/icon1/home_3.png"/></div>
+              <span>{{$t('home.text10')}}</span>
+              <span>{{$t('home.text11')}}</span>
+              <span>{{$t('home.text12')}}</span>
+              <span>{{$t('home.text13')}}</span>
+            </li>
+          </ul>
+          <span>{{$t('home.text14')}}</span>
+          <span>{{$t('home.text15')}}</span>
+          <span>{{$t('home.text16')}}</span>
+          <span>{{$t('home.text17')}}</span>
+          <ul>
+            <li>
+              <div><img src="../../assets/icon1/home_4.png"/></div>
+              <span>{{$t('home.text18')}}</span>
+              <span>{{$t('home.text19')}}</span>
+            </li>
+            <li>
+              <div><img src="../../assets/icon1/home_5.png"/></div>
+              <span>{{$t('home.text20')}}</span>
+              <span>{{$t('home.text21')}}</span>
+            </li>
+            <li>
+              <div><img src="../../assets/icon1/home_6.png"/></div>
+              <span>{{$t('home.text22')}}</span>
+              <span>{{$t('home.text23')}}</span>
+            </li>
+            <li>
+              <div><img src="../../assets/icon1/home_7.png"/></div>
+              <span>{{$t('home.text24')}}</span>
+              <span>{{$t('home.text25')}}</span>
+            </li>
+            <li>
+              <div><img src="../../assets/icon1/home_8.png"/></div>
+              <span>{{$t('home.text26')}}</span>
+              <span>{{$t('home.text27')}}</span>
+            </li>
+          </ul>
         </div>
-        <div>
-          <div class="code-item">
-            <vue-qr :text="iosDownloadUrl" :size="200"></vue-qr>
-          </div>
-          <div style="text-align: center;margin-top: 5px;">iOS</div>
-        </div>
-			</div>
-		</div>
-        <!-- <ul class="download">
-          <li class="qrcode">{{$t('description.scanqrcode')}}</li>
-          <li class="wrapper">
-            <div class="download_app">
-              <img  src="../../assets/images/appdownload.png">
-            </div>
-            <div class="abstract">
-              <div class="content">
-                <span></span>
-              </div>
-            </div>
-          </li>
-        </ul> -->
       </div>
     </div>
 
-    <!--<div class="app_bottom">-->
-    <!--  <div class="left_logo">-->
-    <!--    <img style="float:left;" src="../../assets/images/logo_2.png"></img>-->
-    <!--    <div style="float:left;height: 40px;line-height:40px;color:#000;">{{$t("cms.downloadslogan")}}</div>-->
-    <!--  </div>-->
-    <!--  <div class="right_btn_wrap"><router-link target="_blank" to="/app" class="right_btn">{{$t("cms.download")}}</router-link></div>-->
-    <!--</div>-->
   </div>
 </template>
 <script>
-import Vue from "vue";
-
 var Stomp = require("stompjs");
 var SockJS = require("sockjs-client");
 var moment = require("moment");
 import SvgLine from "@components/exchange/SvgLine.vue";
 import SvgIndex from "@components/exchange/SvgIndex.vue";
-import $ from "@js/jquery.min.js";
 
 import Swiper from 'swiper';
 import VueQr from 'vue-qr'
@@ -252,47 +226,47 @@ export default {
       totalNum: 0,
       searchKey: "",
       favorColumns: [
-        {
-          title: self.$t("service.favor"),
-          align: "center",
-          key: "collection",
-          width: 60,
-          render: (h, params) => {
-            let flag = this.isLogin;
-            return h("Icon", {
-              props: {
-                color: "#f0a70a",
-                size: "18",
-                type: params.row.isFavor
-                  ? "ios-star"
-                  : "ios-star-outline"
-              },
-              nativeOn: {
-                click: () => {
-                  if (this.isLogin) {
-                    event.stopPropagation(); //阻止事件冒泡
-                    if (
-                      event.currentTarget.className ==
-                      "ivu-icon ivu-icon-ios-star"
-                    ) {
-                      // 解除收藏
-                      this.cancelCollect(params.index, params.row);
-                      event.currentTarget.className ==
-                        "ivu-icon ivu-icon-ios-star-outline";
-                    } else {
-                      // 收藏
-                      this.collect(params.index, params.row);
-                      event.currentTarget.className =
-                        "ivu-icon ivu-icon-ios-star";
-                    }
-                  } else {
-                    this.$Message.warning("请先登录");
-                  }
-                }
-              }
-            });
-          }
-        },
+        // {
+        //   title: self.$t("service.favor"),
+        //   align: "center",
+        //   key: "collection",
+        //   width: 60,
+        //   render: (h, params) => {
+        //     let flag = this.isLogin;
+        //     return h("Icon", {
+        //       props: {
+        //         color: "#f0a70a",
+        //         size: "18",
+        //         type: params.row.isFavor
+        //           ? "ios-star"
+        //           : "ios-star-outline"
+        //       },
+        //       nativeOn: {
+        //         click: () => {
+        //           if (this.isLogin) {
+        //             event.stopPropagation(); //阻止事件冒泡
+        //             if (
+        //               event.currentTarget.className ==
+        //               "ivu-icon ivu-icon-ios-star"
+        //             ) {
+        //               // 解除收藏
+        //               this.cancelCollect(params.index, params.row);
+        //               event.currentTarget.className ==
+        //                 "ivu-icon ivu-icon-ios-star-outline";
+        //             } else {
+        //               // 收藏
+        //               this.collect(params.index, params.row);
+        //               event.currentTarget.className =
+        //                 "ivu-icon ivu-icon-ios-star";
+        //             }
+        //           } else {
+        //             this.$Message.warning("请先登录");
+        //           }
+        //         }
+        //       }
+        //     });
+        //   }
+        // },
         {
           title: self.$t("service.COIN"),
           align: "center",
@@ -320,16 +294,19 @@ export default {
             //   rmb = self.round(self.mul(params.row.price, self.CNYRate), 2);
             let CNYRate = self.CNYRate || 6.5,
               rmb = self.round(self.mul(params.row.usdRate, CNYRate), 2);
-            const isgreen =
-              parseFloat(params.row.rose) < 0 ? "none" : "inline-block";
-            const nogreen =
-              parseFloat(params.row.rose) < 0 ? "inline-block" : "none";
+            const isgreen = parseFloat(params.row.rose) < 0 ? "none" : "inline-block";
+            const nogreen = parseFloat(params.row.rose) < 0 ? "inline-block" : "none";
+            const className = parseFloat(params.row.rose) < 0 ? "red" : "green";
             return h("div", {
                   attrs: {
                     class: "price-td"
                   }
             },[
-              h("span", {}, params.row.price),
+              h("span", {
+                attrs: {
+                  class: className
+                }
+              }, params.row.price),
               h("span", {
                   attrs: {
                     class: "price-rmb"
@@ -403,22 +380,22 @@ export default {
             );
           }
         },
-        {
-          title: self.$t("service.high"),
-          align: "center",
-          key: "high",
-          render: (h, params) => {
-            return h("div", {}, params.row.high);
-          }
-        },
-        {
-          title: self.$t("service.low"),
-          align: "center",
-          key: "high",
-          render: (h, params) => {
-            return h("div", {}, params.row.low);
-          }
-        },
+        // {
+        //   title: self.$t("service.high"),
+        //   align: "center",
+        //   key: "high",
+        //   render: (h, params) => {
+        //     return h("div", {}, params.row.high);
+        //   }
+        // },
+        // {
+        //   title: self.$t("service.low"),
+        //   align: "center",
+        //   key: "high",
+        //   render: (h, params) => {
+        //     return h("div", {}, params.row.low);
+        //   }
+        // },
         {
           title: self.$t("service.ExchangeNum"),
           align: "center",
@@ -508,7 +485,7 @@ export default {
                 h("span", {
                   style: {
                     cursor: "pointer",
-                    color: "#f0a70a",
+                    color: "#4364EE",
                     display: "inline-block",
                     padding: "2px 8px"
                   },
@@ -522,7 +499,7 @@ export default {
                       });
                     }
                   }
-                }, self.$t("service.trading"))
+                }, self.$t("service.Exchange"))
               ]);
             }
           }
@@ -538,56 +515,56 @@ export default {
         ETH2: [],
         favor: [],
         columns: [
-          {
-            title: self.$t("service.favor"),
-            align: "center",
-            key: "collection",
-            width: 60,
-            // renderHeader: (h, params) => {
-            // return h("Icon", {
-            //   props: {
-            //     color: "#f0a70a",
-            //     size: "18",
-            //     type: "android-star-outline"
-            //   }
-            // });
-            // },
-            render: (h, params) => {
-              let flag = this.isLogin;
-              return h("Icon", {
-                props: {
-                  color: "#f0a70a",
-                  size: "18",
-                  type: params.row.isFavor
-                    ? "ios-star"
-                    : "ios-star-outline"
-                },
-                nativeOn: {
-                  click: (event) => {
-                    if (this.isLogin) {
-                      event.stopPropagation(); //阻止事件冒泡
-                      if (
-                        event.currentTarget.className ==
-                        "ivu-icon ivu-icon-ios-star"
-                      ) {
-                        // 解除收藏
-                        this.cancelCollect(params.index, params.row);
-                        event.currentTarget.className ==
-                          "ivu-icon ivu-icon-ios-star-outline";
-                      } else {
-                        // 收藏
-                        this.collect(params.index, params.row);
-                        event.currentTarget.className =
-                          "ivu-icon ivu-icon-ios-star";
-                      }
-                    } else {
-                      this.$Message.warning("请先登录");
-                    }
-                  }
-                }
-              });
-            }
-          },
+          // {
+          //   title: self.$t("service.favor"),
+          //   align: "center",
+          //   key: "collection",
+          //   width: 60,
+          //   // renderHeader: (h, params) => {
+          //   // return h("Icon", {
+          //   //   props: {
+          //   //     color: "#f0a70a",
+          //   //     size: "18",
+          //   //     type: "android-star-outline"
+          //   //   }
+          //   // });
+          //   // },
+          //   render: (h, params) => {
+          //     let flag = this.isLogin;
+          //     return h("Icon", {
+          //       props: {
+          //         color: "#f0a70a",
+          //         size: "18",
+          //         type: params.row.isFavor
+          //           ? "ios-star"
+          //           : "ios-star-outline"
+          //       },
+          //       nativeOn: {
+          //         click: (event) => {
+          //           if (this.isLogin) {
+          //             event.stopPropagation(); //阻止事件冒泡
+          //             if (
+          //               event.currentTarget.className ==
+          //               "ivu-icon ivu-icon-ios-star"
+          //             ) {
+          //               // 解除收藏
+          //               this.cancelCollect(params.index, params.row);
+          //               event.currentTarget.className ==
+          //                 "ivu-icon ivu-icon-ios-star-outline";
+          //             } else {
+          //               // 收藏
+          //               this.collect(params.index, params.row);
+          //               event.currentTarget.className =
+          //                 "ivu-icon ivu-icon-ios-star";
+          //             }
+          //           } else {
+          //             this.$Message.warning("请先登录");
+          //           }
+          //         }
+          //       }
+          //     });
+          //   }
+          // },
           {
             title: self.$t("service.COIN"),
             align: "center",
@@ -703,22 +680,22 @@ export default {
               );
             }
           },
-          {
-            title: self.$t("service.high"),
-            align: "center",
-            key: "high",
-            render: (h, params) => {
-              return h("div", {}, params.row.high);
-            }
-          },
-          {
-            title: self.$t("service.low"),
-            align: "center",
-            key: "high",
-            render: (h, params) => {
-              return h("div", {}, params.row.low);
-            }
-          },
+          // {
+          //   title: self.$t("service.high"),
+          //   align: "center",
+          //   key: "high",
+          //   render: (h, params) => {
+          //     return h("div", {}, params.row.high);
+          //   }
+          // },
+          // {
+          //   title: self.$t("service.low"),
+          //   align: "center",
+          //   key: "high",
+          //   render: (h, params) => {
+          //     return h("div", {}, params.row.low);
+          //   }
+          // },
           {
             title: self.$t("service.ExchangeNum"),
             align: "center",
@@ -791,7 +768,7 @@ export default {
                 h("span", {
                   style: {
                     cursor: "pointer",
-                    color: "#f0a70a",
+                    color: "#4364EE",
                     display: "inline-block",
                     padding: "2px 8px"
                   },
@@ -805,7 +782,7 @@ export default {
                       });
                     }
                   }
-                }, self.$t("service.trading"))
+                }, self.$t("service.Exchange"))
               ]);
             }
           }
@@ -895,9 +872,7 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-        },
-        slidesPerView :4,
-        spaceBetween : 25
+        }
       });
       var comtainer = document.getElementById('swiper_container');
       comtainer.onmouseenter = function () {
@@ -1272,6 +1247,56 @@ export default {
 };
 </script>
 <style scoped lang="scss" >
+/*前五热门交易*/
+.hot {
+  background: #151826;opacity: 1;height: 143px;padding-top: 28px;
+  .container {
+    float: left;
+    width: 20%;
+    height: 86px;
+    padding: 0 28px 0 31px;
+    font-family: Microsoft YaHei;
+    color: #FFFFFF;
+    &.line {
+      border-right: 1px solid #707070;
+    }
+    .left, .right {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .left {
+      float: left;
+      &>div:nth-child(1) {
+        font-size: 14px;
+        font-weight: 400;
+      }
+      &>div:nth-child(2) {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      &>div:nth-child(3) {
+        font-size: 12px;
+        font-weight: 400;
+        color: #999999;
+      }
+    }
+    .right {
+      float: right;
+      text-align: right;
+      &>div:nth-child(1) {
+        font-size: 14px;
+        &.up {
+          color: green;
+        }
+        &.down {
+          color: #FF0000;
+        }
+      }
+    }
+  }
+}
 @media screen and (max-width:768px){
   .app_bottom{
     display: block!important;
@@ -1283,10 +1308,8 @@ export default {
 .banner-panel{
   height:400px;background-color:#141e2b;overflow:hidden;position:relative;
   .activity-list{
-    width: 100%;min-width:1200px;display:flex;flex-start:row;justify-content:center;position:absolute;bottom: 20px;
+    width: 100%;min-width:1200px;display:flex;flex-start:row;justify-content:center;position:absolute;
     .swiper-container {
-      width: 72%;
-      max-height: 150px;
       margin: 0 auto;
       .swiper-wrapper{
         margin-bottom: 15px;
@@ -1297,7 +1320,7 @@ export default {
             cursor:pointer;
           }
           img{
-            max-width:250px;
+            /*max-width:250px;*/
             transition: all 0.5s;
             width: 100%;
             &:hover{
@@ -1455,52 +1478,6 @@ export default {
     }
   }
 }
-#page6 {
-  padding: 20px 14%;
-  ul {
-    list-style-type: none;
-  }
-  .page6-out {
-    -moz-box-shadow: 2px 2px 5px #f5f5f5, -2px -2px 4px #f5f5f5;
-    -webkit-box-shadow: 2px 2px 5px #f5f5f5, -2px -2px 4px #f5f5f5;
-    box-shadow: 2px 2px 5px #f5f5f5, -2px -2px 4px #f5f5f5;
-    padding: 30px 20px;
-    overflow: hidden;
-    .page6-list {
-      width: 33.33333%;
-      float: left;
-      .list-op {
-        .special {
-          line-height: 26px;
-          .num {
-            color: #f0a70a;
-          }
-        }
-        .list-opBHB {
-          text-align: left;
-        }
-        .text {
-          text-align: left;
-          word-break: break-all;
-          margin-right: 20px;
-          .num {
-            font-size: 30px;
-            color: #f0a70a;
-            font-weight: 500;
-          }
-          .type {
-            font-size: 16px;
-            color: #f0a70a;
-            font-weight: 500;
-          }
-        }
-        .num2 {
-          color: #f0a70a;
-        }
-      }
-    }
-  }
-}
 #progress {
   padding: 20px 14%;
   .title {
@@ -1527,7 +1504,7 @@ export default {
   }
 }
 #page2 {
-  background: #141e2c;
+  /*background: #141e2c;*/
   height: auto;
   min-height: 320px;
   padding: 40px 14%;
@@ -1589,192 +1566,97 @@ export default {
     }
   }
 }
-.ivu-input{
-  border-radius: 20px;
-  border-color: transparent;
-}
-#page4 {
-  background: #192330;
-  height: auto;
-  padding: 80px 0 80px 0;
-  ul {
-    width: 88%;
-    margin: 0 auto;
-    display: flex;
-    li {
-      flex: 0 0  25%;
-      display: inline-block;
-      width: 24%;
-      padding: 0 15px;
-      height: 260px;
-      div {
-        width: 130px;
-        height: 130px;
-        border-radius: 50%;
-        vertical-align: middle;
-        text-align: center;
-        margin: 0 auto;
-        img {
-          height: 125px;
-          margin-top: 8px;
+#page3 {
+  width: 100%;
+  min-width: 1200px;
+  background-color: #000000;
+  color: #999999;
+  .container {
+    overflow: hidden;
+    width: 1200px;
+    margin: auto;
+    color: #999999;
+    ul {
+      list-style: none;
+    }
+    span {
+      display: block;
+      text-align: center;
+    }
+    &>span:nth-child(1) {
+      font-size: 40px;
+      margin-top: 100px;
+      color: #FFFFFF;
+    }
+    &>span:nth-child(2) {
+      font-size: 26px;
+      margin-top: 40px;
+    }
+    &>ul:nth-child(3) {
+      display: flex;
+      font-size: 12px;
+      margin-top: 120px;
+      li {
+        width: 33%;
+        div {
+          height: 186px;
+          text-align: center;
+          vertical-align: middle;
+          img {
+            width: 50%;
+          }
+        }
+        &>span:nth-child(2) {
+          margin-bottom: 20px;
+          font-size: 20px;
+          color: #DDDDDD;
+        }
+        span {
+          display: block;
         }
       }
-      p {
-        font-size: 14px;
-        margin: 20px 0;
-        text-align: center;
-        color: #828ea1;
-      }
-      p.title {
-        color: #fff;
-        font-size: 18px;
-        font-weight: 400;
+    }
+    &>span:nth-child(4) {
+      font-size: 40px;
+      margin-top: 120px;
+      margin-bottom: 40px;
+      color: #FFFFFF;
+    }
+    &>span:nth-child(5),&>span:nth-child(6),&>span:nth-child(7) {
+      font-size: 26px;
+      text-align: center;
+    }
+    &>ul:nth-child(8) {
+      display: flex;
+      font-size: 12px;
+      margin-top: 120px;
+      margin-bottom: 100px;
+      li {
+        width: 20%;
+        div {
+          text-align: center;
+          height: 96px;
+          img {
+            width: 25%;
+          }
+        }
+        span {
+          width: 60%;
+          margin: auto;
+        }
       }
     }
   }
+}
+.ivu-input{
+  border-radius: 20px;
+  border-color: transparent;
 }
 .bg-dark{
   background: #192330;
 }
 .bg-light{
   background: #222e3d;
-}
-#page6{
-  min-height: 460px;
-  padding: 80px 14%;
-  position: relative;
-  .title{
-    font-size: 30px;
-    text-align:center;
-    width: 100%;
-    letter-spacing: 6px;
-  }
-  .title-left{
-    font-size: 30px;
-    text-align:left;
-    width: 100%;
-    letter-spacing: 6px;
-  }
-  .subtitle{
-    margin-bottom: 40px;
-    color: #828ea1;
-    font-size: 13px;
-    text-align:center;
-    width: 100%;
-  }
-  .detail{
-    line-height: 40px;
-    letter-spacing: 2px;
-    text-indent:45px;
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #828ea1;
-    text-align:justify;
-  }
-}
-#page5 {
-  height: 517px;
-  // padding: 0 14%;
-  position: relative;
-  background: #192330 url("../../assets/images/app-download.jpg") no-repeat 0 0;
-  background-size: 100% 517px;
-  overflow: hidden;
-  display: flex;justify-content: center;align-items:center;
-  .phone_image {
-    width: 480px;
-    float: left;
-    height: 100%;
-    background: url("../../assets/images/mockup.png") no-repeat left 0px;
-    background-size: 480px;
-  }
-  .download-data {
-  	width: 620px;padding-bottom: 50px;margin-left: 30px;
-  	// border: 1px solid red;
-  
-  	.tips-title {
-  		width: 100%;
-  		text-align: center;
-  		color: #E8D164;
-  		font-size: 25px;
-  		padding: 0px 0px 20px;
-  	}
-  
-  	.tips-tetx {
-  		width: 100%;
-  		color: #FFFFFF;
-  		font-size: 20px;text-align: center;
-  		line-height: 28px;
-  	}
-  
-  	.code-cont {
-  		width: 100%;
-  		display: flex;
-  		align-items: center;
-  		justify-content: space-between;
-  		margin-top: 60px;
-  		padding: 0px 50px;
-  
-  		.code-item {
-  			width: 200px;
-  			height: 200px;
-  			padding: 5px;overflow: hidden;display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #FFFFFF;
-			img{
-				width: 100%;height: 100%;
-			}
-  		}
-  	}
-  }
-  .download {
-    float: right;
-    list-style-type: none;
-    .qrcode {
-      color: #fff;
-      font-size: 18px;
-      font-weight: 500;
-      margin-top: 140px;
-      text-align: left;
-      line-height: 40px;
-      margin-bottom: 14px;
-      font-weight: 900;
-    }
-    .wrapper {
-      width: 190px;
-      height: 300px;
-      float: left;
-      padding: 0;
-      margin-right: 0px;
-      .download_app {
-        height: 190px;
-        img {
-          width: 100%;
-          border-radius: 5px;
-        }
-      }
-      .abstract {
-        text-align: center;
-        display: flex;
-        margin-top: 14px;
-        justify-content: center;
-        align-items: center;
-        height: 30px;
-        .image {
-          width: 18px;
-          img {
-            vertical-align: middle;
-          }
-        }
-        .content {
-          font-size: 12px;
-          text-align: left;
-          color: #fff;
-          margin-left: 15px;
-        }
-      }
-    }
-  }
 }
 </style>
 <style lang="scss">
@@ -1795,33 +1677,33 @@ export default {
   .ptjy {
     position:relative;
     min-height: 500px;
-    background-color: #141e2c;
-    border-bottom: 1px solid #27313e!important;
-    &:after{
-      background:#27313e!important;
-      content: '';
-      width: 1px;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 3;
-    }
-    &:before{
-      background:#27313e!important;
-      content: '';
-      width: 1px;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 3;
-    }
+    /*background-color: #141e2c;*/
+    /*border-bottom: 1px solid #27313e!important;*/
+    /*&:after{*/
+      /*background:#27313e!important;*/
+      /*content: '';*/
+      /*width: 1px;*/
+      /*height: 100%;*/
+      /*position: absolute;*/
+      /*top: 0;*/
+      /*right: 0;*/
+      /*z-index: 3;*/
+    /*}*/
+    /*&:before{*/
+      /*background:#27313e!important;*/
+      /*content: '';*/
+      /*width: 1px;*/
+      /*height: 100%;*/
+      /*position: absolute;*/
+      /*top: 0;*/
+      /*left: 0;*/
+      /*z-index: 3;*/
+    /*}*/
     .tables {
       .ivu-table {
-        background-color: #141e2c;
+        /*background-color: #141e2c;*/
         .ivu-table-header {
-          background:#27313e;
+          /*background:#27313e;*/
           color:#888;
           th {
             background: none;
@@ -1830,7 +1712,7 @@ export default {
         }
 
         .ivu-table-header{
-          background: #141e2c;
+          /*background: #141e2c;*/
               border-bottom: 1px solid #27313e;
           .ivu-table-cell {
             padding: 10px 0;
@@ -1878,12 +1760,6 @@ export default {
 #fullpage {
   background: #fff;
   padding-top: 60px;
-}
-
-.section {
-  /* height: 574px; */
-  /* text-align: center; */
-  /* color: #fff; */
 }
 
 .carousel-item {
@@ -1995,19 +1871,6 @@ export default {
   z-index: 1;
 }
 
-#page3 {
-  position: relative;
-  color: #979797;
-  /* background: url(../../assets/images/section3.png) no-repeat center; */
-}
-
-#page3 label {
-  position: absolute;
-  top: 30%;
-  left: 20%;
-  font-size: 30px;
-}
-
 @-webkit-keyframes fadeinB {
   0% {
     top: 50%;
@@ -2050,13 +1913,6 @@ export default {
     top: 40%;
     opacity: 1;
   }
-}
-
-#page3 p {
-  position: absolute;
-  top: 40%;
-  left: 20%;
-  font-size: 15px;
 }
 
 .news_1 {

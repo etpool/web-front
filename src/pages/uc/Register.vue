@@ -8,8 +8,7 @@
           </ButtonGroup>
         </FormItem>
         <FormItem prop="username" style="display:none;">
-          <Input type="text" v-model="formInline.username" :placeholder="$t('uc.regist.username')">
-          </Input>
+          <Input type="text" v-model="formInline.username" :placeholder="$t('uc.regist.username')"/>
         </FormItem>
         <FormItem prop="user">
           <Input type="text" v-model="formInline.user" :placeholder="key" v-if="changeActive==0">
@@ -21,30 +20,25 @@
               </Option>
             </Select>
           </Input>
-          <Input type="text" v-model="formInline.user" :placeholder="key" v-if="changeActive==1">
-          </Input>
+          <Input type="text" v-model="formInline.user" :placeholder="key" v-if="changeActive==1"/>
         </FormItem>
 
         <FormItem prop="code">
           <Input type="text" v-model="formInline.code" :placeholder="$t('uc.regist.smscode')">
+            <!--<input slot="append" id="sendCode" @click="sendCode();" type="Button" shape="circle" :value="sendcodeValue" :disabled='codedisabled'/>-->
+            <Button class="send-code" slot="append" @click="sendCode();" :disabled='codedisabled'>{{sendcodeValue}}</Button>
           </Input>
-          <input id="sendCode" @click="sendCode();" type="Button" shape="circle" :value="sendcodeValue" :disabled='codedisabled'>
-          </input>
         </FormItem>
         <FormItem prop="password"  class="password">
-          <Input type="password" v-model="formInline.password" :placeholder="$t('uc.regist.pwd')">
-          </Input>
+          <Input :type="showPassword?'text':'password'" v-model="formInline.password" :placeholder="$t('uc.regist.pwd')" :icon="showPassword?'ios-eye-outline':'ios-eye-off-outline'" @on-click="showPassword=!showPassword"/>
         </FormItem>
         <FormItem prop="repassword"  class="password">
-          <Input type="password" v-model="formInline.repassword" :placeholder="$t('uc.regist.repwd')">
-          </Input>
+          <Input :type="showRePassword?'text':'password'" v-model="formInline.repassword" :placeholder="$t('uc.regist.repwd')" :icon="showRePassword?'ios-eye-outline':'ios-eye-off-outline'" @on-click="showRePassword=!showRePassword"/>
         </FormItem>
         <FormItem prop="promotion">
-          <Input type="text" v-model="formInline.promotion">
-            <span slot="prepend" style="margin-left: 7px;">{{$t('uc.regist.promotion')}} :</span>
-          </Input>
+          <Input type="text" v-model="formInline.promotion" :placeholder="$t('uc.regist.promotion')"/>
         </FormItem>
-        <div class="check-agree" style="">
+        <div class="check-agree" style="width: 100%;text-align: left;">
           <label>
             <Checkbox v-model="agree">{{$t('uc.regist.agreement')}}</Checkbox>
           </label>
@@ -54,6 +48,7 @@
         <FormItem>
           <Button class="register_btn" @click="handleSubmit('formInline')" :disabled="registing">{{$t('uc.regist.regist')}}</Button>
         </FormItem>
+        <router-link style="width: 100%;text-align: center;color: #0ECBBD;font-size: 12px;" to="/login">{{$t('uc.forget.hasaccount')}}</router-link>
       </Form>
       <Alert v-else type="warning">
         Coming soon!
@@ -66,21 +61,25 @@
 </template>
 <style scoped lang="scss">
 .login_form {
-  background: #0b1520 url(../../assets/images/login_bg.png) no-repeat center center;
-  height: 760px;
-  position: relative;
+  /*background: #0b1520 url(../../assets/images/login_bg.png) no-repeat center center;*/
+  background: linear-gradient(180deg, #0F0E0E 0%, #373636 100%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
   overflow: hidden;
   .login_right {
     padding: 20px 30px;
     position: absolute;
-    background: #17212e;
+    background: #ffffff;
     width: 350px;
-    height: 485px;
+    height: 540px;
     left: 50%;
     top: 50%;
     margin-left: -175px;
-    margin-top: -205px;
-    border-top: 4px solid #f0ac19;
+    margin-top: -270px;
+    /*border-top: 4px solid #f0ac19;*/
     border-radius: 5px;
     .tel-title{
       color: #fff;
@@ -90,9 +89,9 @@
         .ivu-form-item-content {
           .register_btn.ivu-btn {
             width: 100%;
-            background-color: #f0ac19;
+            background-color: #0ECBBD;
             outline: none;
-            border-color: #f0ac19;
+            border-color: #0ECBBD;
             color: #fff;
             border-radius: 5px;
             font-size: 18px;
@@ -109,14 +108,7 @@
             }
           }
           #sendCode {
-            position: absolute;
-            border: 1px solid #f0ac19;
-            background: transparent;
-            top: -10px;
-            outline: none;
-            right: 0;
-            width: 30%;
-            color: #f0ac19;
+            color: #0ECBBD;
             cursor: pointer;
           }
         }
@@ -128,14 +120,14 @@
         font-size: 12px;
         cursor: default;
         a {
-          color: #f0ac19;
+          color: #0ECBBD;
           margin-left: -10px;
         }
         .ivu-checkbox-wrapper.ivu-checkbox-wrapper-checked {
           .ivu-checkbox.ivu-checkbox-checked {
             .ivu-checkbox-inner {
-              border: 1px solid #f0ac19;
-              background-color: #f0ac19;
+              border: 1px solid #0ECBBD;
+              background-color: #0ECBBD;
             }
           }
         }
@@ -177,7 +169,6 @@
 </style>
 <script>
 //   import gtInit from '../../assets/js/gt.js';
-import $ from "jquery";
 export default {
   data() {
     const validateUser = (rule, value, callback) => {
@@ -243,6 +234,8 @@ export default {
         repassword: "",
         promotion: ""
       },
+      showPassword: false,
+      showRePassword: false,
       ruleInline: {
         user: [{ validator: validateUser, trigger: "blur" }],
         code: [
@@ -552,6 +545,18 @@ export default {
 </script>
 <style lang="scss">
 .login_form {
+  .ivu-form-item-error .ivu-input-group-append, .ivu-form-item-error .ivu-input-group-prepend,.ivu-input-group-append, .ivu-input-group-prepend{
+    background-color: transparent;
+    border: none;
+  }
+  .send-code {
+    background-color: #FFFFFF;
+    color: #0ECBBD;
+    border-top: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    border-radius: 0;
+  }
   .login_right {
     form.ivu-form.ivu-form-label-right.ivu-form-inline {
       text-align:center;
@@ -559,18 +564,12 @@ export default {
         .ivu-form-item-content {
           .ivu-input-wrapper.ivu-input-type {
             .ivu-input {
-              border: none;
-              border-bottom: 1px solid #27313e;
+              border: 1px solid #DDDDDD;
               font-size: 14px;
               background:transparent;
               border-radius:0;
-              // color:#fff;
               &:focus {
-                border: none;
-                border-bottom: 1px solid #27313e;
-                -moz-box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
-                -webkit-box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
-                box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
+                border: 1px solid #0ECBBD;
               }
             }
           }
@@ -580,19 +579,19 @@ export default {
         .ivu-checkbox-wrapper {
           .ivu-checkbox-input {
             &:focus {
-              border: none;
-              outline: none;
-              -moz-box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
-              -webkit-box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
-              box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
+              //border: none;
+              //outline: none;
+              //-moz-box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
+              //-webkit-box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
+              //box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
             }
           }
         }
         .ivu-checkbox-wrapper.ivu-checkbox-wrapper-checked {
           .ivu-checkbox.ivu-checkbox-checked {
             .ivu-checkbox-inner {
-              border: 1px solid #f0ac19;
-              background-color: #f0ac19;
+              border: 1px solid #0ECBBD;
+              background-color: #0ECBBD;
             }
           }
 
@@ -635,7 +634,7 @@ export default {
   }
   .ivu-btn-group>.ivu-btn.active, .ivu-btn-group>.ivu-btn:active, .ivu-btn-group>.ivu-btn:hover{
     border-color: transparent!important;
-    color: #f0ac19!important;
+    color: #0ECBBD!important;
   }
   .ivu-btn-group>.ivu-btn:focus{
     box-shadow: none!important;

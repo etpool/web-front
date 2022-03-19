@@ -12,32 +12,38 @@
         <div class="layout-ceiling">
           <router-link to="/">
             <div class="layout-logo">
-				<img src="./assets/images/logo_1.png" />
-			</div>
+				      <img src="./assets/images/logo_1.png" />
+			      </div>
           </router-link>
           <div class="layout-ceiling-main">
             <!-- 导航条 -->
             <div class="header_nav">
               <Menu :active-name="activeNav" width="auto" :open-names="['1']">
                 <Submenu name="1">
-                  <router-link to="/">
-                    <MenuItem name="nav-index">{{$t("header.index")}}</MenuItem>
-                  </router-link>
+                  <!--<router-link to="/">-->
+                    <!--<MenuItem name="nav-index">{{$t("header.index")}}</MenuItem>-->
+                  <!--</router-link>-->
                   <router-link to="/exchange">
                     <MenuItem name="nav-exchange">{{$t("header.exchange")}}</MenuItem>
                   </router-link>
                   <router-link to="/swap">
                     <MenuItem name="nav-swap">{{$t("header.swap1")}}</MenuItem>
                   </router-link>
-                  <router-link to="/exchange" style="display: none;">
-                    <MenuItem name="nav-swapexchange">{{$t("header.swap2")}}</MenuItem>
+                  <router-link to="/announcement/0">
+                    <MenuItem name="nav-service">{{$t("header.service")}}</MenuItem>
                   </router-link>
-                  <router-link to="/exchange" style="display: none;">
-                    <MenuItem name="nav-swapcfd">{{$t("header.swap3")}}</MenuItem>
-                  </router-link>
-                  <router-link to="/exchange" style="display: none;">
-                    <MenuItem name="nav-swapsecond">{{$t("header.swap4")}}</MenuItem>
-                  </router-link>
+                  <!--<router-link to="/invite">-->
+                    <!--<MenuItem name="nav-community">{{$t("header.community")}}</MenuItem>-->
+                  <!--</router-link>-->
+                  <!--<router-link to="/exchange" style="display: none;">-->
+                    <!--<MenuItem name="nav-swapexchange">{{$t("header.swap2")}}</MenuItem>-->
+                  <!--</router-link>-->
+                  <!--<router-link to="/exchange" style="display: none;">-->
+                    <!--<MenuItem name="nav-swapcfd">{{$t("header.swap3")}}</MenuItem>-->
+                  <!--</router-link>-->
+                  <!--<router-link to="/exchange" style="display: none;">-->
+                    <!--<MenuItem name="nav-swapsecond">{{$t("header.swap4")}}</MenuItem>-->
+                  <!--</router-link>-->
                   <!--<router-link to="/ctc">-->
                   <!--  <MenuItem name="nav-ctc">{{$t("header.ctc")}}</MenuItem>-->
                   <!--</router-link>-->
@@ -56,18 +62,12 @@
                   <!--<router-link to="/news">-->
                   <!--  <MenuItem name="nav-news">{{$t("header.news")}}</MenuItem>-->
                   <!--</router-link>-->
-                  <router-link to="/lab">
-                    <MenuItem name="nav-launchpad">{{$t("header.launchpad")}}</MenuItem>
-                  </router-link>
-                  <a href="javascript:void(0);">
-                    <MenuItem name="nav-b2b">{{$t("header.b2b")}}</MenuItem>
-                  </a>
-                  <router-link to="/invite">
-                    <MenuItem name="nav-community">{{$t("header.community")}}</MenuItem>
-                  </router-link>
-                  <router-link to="/announcement/0">
-                    <MenuItem name="nav-service">{{$t("header.service")}}</MenuItem>
-                  </router-link>
+                  <!--<router-link to="/lab">-->
+                    <!--<MenuItem name="nav-launchpad">{{$t("header.launchpad")}}</MenuItem>-->
+                  <!--</router-link>-->
+                  <!--<a href="javascript:void(0);">-->
+                    <!--<MenuItem name="nav-b2b">{{$t("header.b2b")}}</MenuItem>-->
+                  <!--</a>-->
                   <!--<router-link to="/whitepaper">-->
                   <!--  <MenuItem name="nav-whitepaper">{{$t("header.whitepaper")}}</MenuItem>-->
                   <!--</router-link>-->
@@ -223,117 +223,105 @@
             <!-- </router-link> -->
         </Menu>
     </Drawer>
-    <div class="footer">
+    <div v-if="showFooter" class="footer">
       <div class="footer_content">
-        <div class="footer_left">
-          <img src="./assets/images/logo_2.png" style="margin-top: 0px; width: 250px; height: auto;" ></img>
-        </div>
-        <div class="footer_right">
-          <ul>
-            <li class="footer_title">
-              <span>{{$t("footer.gsjj")}}</span>
-            </li>
-            <li>
-              <router-link target="_blank" to="/helplist?cate=6">{{$t("footer.gywm")}}</router-link>
-            </li>
-            <li>
-              <router-link target="_blank" to="/helplist?cate=6">{{$t("footer.jrwm")}}</router-link>
-            </li>
-            <li>
-              <router-link target="_blank" to="/helplist?cate=0">{{$t("footer.feilv")}}</router-link>
-            </li>
-            <li>
-              <router-link target="_blank" to="/helplist?cate=5">{{$t("footer.fwtk")}}</router-link>
-            </li>
-            <li>
-              <router-link target="_blank" to="/announcement/0">{{$t("footer.notice")}}</router-link>
-            </li>
-            <!--<li class="wechatclick">-->
-            <!--  <poptip width="80" trigger="hover" placement="right">-->
-            <!--    <a href="javascript:;" class="wechat">{{$t("footer.apidoc")}}</a>-->
-            <!--    <div slot="content">-->
-            <!--      <p style="text-align:center;">{{$t("footer.zwkf")}}</p>-->
-            <!--    </div>-->
-            <!--  </poptip>-->
-            <!--</li>-->
-          </ul>
-          <ul>
-            <li class="footer_title">
-              <span>{{$t("footer.bzzx")}}</span>
-            </li>
-            <li>
-              <router-link target="_blank" to="/helplist?cate=4">{{$t("footer.sbsq")}}</router-link>
-            </li>
-            <li>
-              <router-link target="_blank" to="/helplist?cate=0">{{$t("footer.xszn")}}</router-link>
-            </li>
-            <li>
-              <router-link target="_blank" to="/helplist?cate=1">{{$t("footer.cjwt")}}</router-link>
-            </li>
-            <li>
-              <router-link target="_blank" to="/helplist?cate=2">{{$t("footer.jyzn")}}</router-link>
-            </li>
-            <li>
-              <router-link target="_blank" to="/helplist?cate=3">{{$t("footer.bzzl")}}</router-link>
-            </li>
-          </ul>
-          <ul>
-            <li class="footer_title">
-              <span>{{$t("footer.lxwm")}}</span>
-            </li>
-            <li class="wechatclick">
-              <poptip width="200" trigger="hover" placement="right">
-                <a href="javascript:;" class="wechat">{{$t("footer.kolhz")}}</a>
-                <div slot="content">
-                  <p style="text-align:center;">kol@bihuo.exchange</p>
-                </div>
-              </poptip>
-            </li>
-            <li class="wechatclick">
-              <poptip width="200" trigger="hover" placement="right">
-                <a href="javascript:;" class="wechat">{{$t("footer.mthz")}}</a>
-                <div slot="content">
-                  <p style="text-align:center;">media@bihuo.exchange</p>
-                </div>
-              </poptip>
-            </li>
-            <li class="wechatclick">
-              <poptip width="200" trigger="hover" placement="right">
-                <a href="javascript:;" class="wechat">{{$t("footer.tsyjy")}}</a>
-                <div slot="content">
-                  <p style="text-align:center;">suggest@bihuo.exchange</p>
-                </div>
-              </poptip>
-            </li>
-          </ul>
-          <ul>
-            <li class="footer_title">
-              <span>{{$t("footer.sq")}}</span>
-            </li>
-            <li style="display: flex">
-                <div style="margin-right: 8px">
-                  <a target="_blank" href="https://t.me/+eYCFfgnXYVUxMDg9">
-                    <img style="width: 20px" src="./assets/icon1/sq1.png" alt="">
-                  </a>
-                </div>
-                <div style="margin-right: 8px">
-                  <a target="_blank" href="https://discord.gg/YkCHvdEw7G">
-                    <img style="width: 20px" src="./assets/icon1/sq2.png" alt="">
-                  </a>
-                </div>
-                <div style="margin-right: 8px">
-                  <a target="_blank" href="https://twitter.com/BihuoExchange">
-                    <img style="width: 20px" src="./assets/icon1/sq3.png" alt="">
-                  </a>
-                </div>
-                <div style="margin-right: 8px">
-                  <a target="_blank" href="https://www.instagram.com/bihuoexchange">
-                    <img style="width: 20px" src="./assets/icon1/sq4.png" alt="">
-                  </a>
-                </div>
-            </li>
-          </ul>
-        </div>
+        <img src="./assets/images/logo_2.png" style="width: 178px;"/>
+        <ul>
+          <li class="footer_title">
+            <span>{{$t("footer.bzzx")}}</span>
+          </li>
+          <li>
+            <router-link target="_blank" to="/helplist?cate=4">{{$t("footer.sbsq")}}</router-link>
+          </li>
+          <li>
+            <router-link target="_blank" to="/helplist?cate=0">{{$t("footer.xszn")}}</router-link>
+          </li>
+          <li>
+            <router-link target="_blank" to="/helplist?cate=1">{{$t("footer.cjwt")}}</router-link>
+          </li>
+          <li>
+            <router-link target="_blank" to="/helplist?cate=2">{{$t("footer.jyzn")}}</router-link>
+          </li>
+          <li>
+            <router-link target="_blank" to="/helplist?cate=3">{{$t("footer.bzzl")}}</router-link>
+          </li>
+        </ul>
+        <ul>
+          <li class="footer_title">
+            <span>{{$t("footer.gsjj")}}</span>
+          </li>
+          <li>
+            <router-link target="_blank" to="/helplist?cate=6">{{$t("footer.gywm")}}</router-link>
+          </li>
+          <li>
+            <router-link target="_blank" to="/helplist?cate=6">{{$t("footer.jrwm")}}</router-link>
+          </li>
+          <li>
+            <router-link target="_blank" to="/helplist?cate=0">{{$t("footer.feilv")}}</router-link>
+          </li>
+          <li>
+            <router-link target="_blank" to="/helplist?cate=5">{{$t("footer.fwtk")}}</router-link>
+          </li>
+          <li>
+            <router-link target="_blank" to="/announcement/0">{{$t("footer.notice")}}</router-link>
+          </li>
+        </ul>
+        <ul>
+          <li class="footer_title">
+            <span>{{$t("footer.lxwm")}}</span>
+          </li>
+          <li class="wechatclick">
+            <poptip width="200" trigger="hover" placement="right">
+              <a href="javascript:;" class="wechat">{{$t("footer.kolhz")}}</a>
+              <div slot="content">
+                <p style="text-align:center;">kol@bihuo.exchange</p>
+              </div>
+            </poptip>
+          </li>
+          <li class="wechatclick">
+            <poptip width="200" trigger="hover" placement="right">
+              <a href="javascript:;" class="wechat">{{$t("footer.mthz")}}</a>
+              <div slot="content">
+                <p style="text-align:center;">media@bihuo.exchange</p>
+              </div>
+            </poptip>
+          </li>
+          <li class="wechatclick">
+            <poptip width="200" trigger="hover" placement="right">
+              <a href="javascript:;" class="wechat">{{$t("footer.tsyjy")}}</a>
+              <div slot="content">
+                <p style="text-align:center;">suggest@bihuo.exchange</p>
+              </div>
+            </poptip>
+          </li>
+        </ul>
+        <ul>
+          <li class="footer_title">
+            <span>{{$t("footer.sq")}}</span>
+          </li>
+          <li style="display: flex">
+            <div style="margin-right: 8px">
+              <a target="_blank" href="https://t.me/+eYCFfgnXYVUxMDg9">
+                <img style="width: 20px" src="./assets/icon1/sq1.png" alt="">
+              </a>
+            </div>
+            <div style="margin-right: 8px">
+              <a target="_blank" href="https://discord.gg/YkCHvdEw7G">
+                <img style="width: 20px" src="./assets/icon1/sq2.png" alt="">
+              </a>
+            </div>
+            <div style="margin-right: 8px">
+              <a target="_blank" href="https://twitter.com/BihuoExchange">
+                <img style="width: 20px" src="./assets/icon1/sq3.png" alt="">
+              </a>
+            </div>
+            <div style="margin-right: 8px">
+              <a target="_blank" href="https://www.instagram.com/bihuoexchange">
+                <img style="width: 20px" src="./assets/icon1/sq4.png" alt="">
+              </a>
+            </div>
+          </li>
+        </ul>
       </div>
 
 
@@ -355,8 +343,6 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
-import { mapGetters, mapActions } from "vuex";
 import VueQr from 'vue-qr'
 export default {
   name: "app",
@@ -461,6 +447,9 @@ export default {
     },
     exchangeSkin() {
       return this.$store.state.exchangeSkin;
+    },
+    showFooter () {
+      return ['/login', '/register'].indexOf(this.$route.path) === -1;
     }
   },
   created: function() {
@@ -578,9 +567,6 @@ export default {
   .header_nav_mobile_triggle{
     display: inline-block!important;
   }
-  .footer_content{
-    padding: 80px 20px;
-  }
   .page-view, .page-view2{
     .page-content{
       .layout{
@@ -659,7 +645,7 @@ export default {
         .layout-ceiling-main {
           height: 50px;
           line-height: 50px;
-          margin-left: 250px;
+          /*margin-left: 250px;*/
           .header_nav {
             li.ivu-menu-submenu.ivu-menu-item-active.ivu-menu-opened.ivu-menu-child-item-active {
               background: none;
@@ -725,7 +711,7 @@ export default {
                 box-sizing: border-box;
                 li {
                   height: 100%;
-                  color: #828ea1;
+                  color: #ffffff;
                 }
                 &:hover {
                   li {
@@ -1138,13 +1124,6 @@ export default {
       }
     }
   }
-  .footer{
-    .footer_content{
-      .footer_right{
-        display: none;
-      }
-    }
-  }
 }
 
 .page-view3 {
@@ -1269,20 +1248,21 @@ export default {
 .ivu-table-wrapper {
   background-color: #192330;
   .ivu-table {
-    box-shadow: 0px 0px 4px #27313e;
-    background-color: #192330;
+    /*box-shadow: 0px 0px 4px #27313e;*/
+    /*background-color: #192330;*/
     color: #ccc;
     &:before {
       background: transparent;
     }
     &:after {
       background: #192330;
+      display: none;
     }
     .ivu-table-header {
       th {
-        background-color: #27313e;
+        background-color: #ffffff;
         border: none;
-        color: #ccc;
+        color: #999999;
       }
     }
     .ivu-table-row:hover{
@@ -1291,8 +1271,8 @@ export default {
     .ivu-table-row td {
       background-color: transparent;
       border: none;
-      border-bottom: 1px solid #27313e;
-      color: #fff;
+      border-bottom: 1px solid #F5F5F5;
+      color: #000000;
     }
   }
 }
@@ -1316,7 +1296,7 @@ export default {
   .page-content {
     .layout {
       .layout-ceiling {
-        background: #172636;
+        background: #0D111F;
         box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
         .layout-ceiling-main {
           .header_nav {
@@ -1541,7 +1521,7 @@ body {
 .ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item {
   padding-left: 0 !important;
   padding-right: 0;
-  color: rgba(130,142,161,1);
+  color: rgba(255,255,255,1);
   font-size: 14px;
   border-right: 0 !important;
 }
@@ -1654,62 +1634,32 @@ body {
 
 .footer {
   width: 100%;
+  height: 430px;
+  background-color: #000000;
+  padding-top: 120px;
   overflow: hidden;
   margin-top: -200px;
 }
 .footer_content {
-  height: 300px;
-  padding: 80px 100px;
-  color: #53575c;
-  color: rgba(255, 255, 255, 0.8);
-  background: #192330;
+  width: 1200px;
+  margin: auto;
+  color: #999999;
   display: flex;
   justify-content: space-between;
+  ul {
+    list-style: none;
+  }
+  a {
+    color: #999999;
+    font-size: 12px;
+  }
+  .footer_title {
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
 }
 
-.footer_left {
-  float: left;
-  font-size: 14px;
-}
-
-.footer_left img {
-  margin: 15px 0;
-  width: 300px;
-}
-
-.footer_left p {
-  margin: 10px 0;
-  color: #828ea1;
-}
-
-.footer_right {
-  flex: 1;
-  display: flex;
-  //justify-content: space-between;
-  //justify-content: right;
-  padding: 0 100px;
-}
-
-.footer_right ul {
-  float: left;
-  margin: 0 30px;
-}
-.footer_right ul li{
-  list-style-type:none;
-}
-.footer_right ul li a {
-  color: #828ea1;
-  line-height: 30px;
-  display: block;
-  font-size: 12px;
-}
-.footer_right ul li a:hover{
-  color: #FFFFFF;
-}
-.footer_title {
-  font-size: 13px;
-  height: 40px;
-}
 
 .ivu-select-selected-value {
   color: #bbbec4;
@@ -1824,7 +1774,7 @@ body {
 .ivu-input-number-input,
 .ivu-input-number {
   background-color: #192330;
-  color: #fff;
+  /*color: #fff;*/
   border-color: #27313e;
   &:hover {
     border-color: #27313e;
@@ -2343,7 +2293,7 @@ fieldset[disabled] .ivu-input {
   .page-content {
     padding-bottom: 0!important;
     .time_download {
-      
+
     }
     .layout {
       display: none!important;

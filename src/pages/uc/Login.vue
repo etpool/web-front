@@ -2,26 +2,21 @@
   <div class="login_form">
     <div class="login_right">
       <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
-        <div class="login_title">{{$t('uc.login.login')}}</div>
+        <div class="login_title">{{$t('uc.login.welcomelogin')}}</div>
         <FormItem prop="user">
-          <Input name="user" type="text" v-model="formInline.user" :placeholder="$t('uc.login.usertip')" class="user">
-          </Input>
+          <Input name="user" type="text" v-model="formInline.user" :placeholder="$t('uc.login.usertip')" class="user"/>
         </FormItem>
         <FormItem prop="password" class="password">
-          <Input type="password" v-model="formInline.password" :placeholder="$t('uc.login.pwdtip')" @on-keyup="onKeyup">
-          </Input>
+          <Input type="password" v-model="formInline.password" :placeholder="$t('uc.login.pwdtip')" @on-keyup="onKeyup"/>
         </FormItem>
         <p id="notice" class="hide">{{$t('uc.login.validatemsg')}}</p>
-        <p style="height:30px;">
-          <router-link to="/findPwd" style="color:#979797;float:right;padding-right:10px;font-size:12px;">
-            {{$t('uc.login.forget')}}
-          </router-link>
-        </p>
         <FormItem style="margin-bottom:15px;">
           <Button class="login_btn">{{$t('uc.login.login')}}</Button>
         </FormItem>
         <div class='to_register'>
-          <span>{{$t('uc.login.noaccount')}}</span>
+          <router-link to="/findPwd">
+            {{$t('uc.login.forget')}}
+          </router-link>
           <router-link to="/register">{{$t('uc.login.goregister')}}</router-link>
         </div>
       </Form>
@@ -29,91 +24,6 @@
     </div>
   </div>
 </template>
-<style scoped lang="scss">
-/* 验证码 */
-.login_form {
-  background: #0b1520 url(../../assets/images/login_bg.png) no-repeat center center;
-  height: 760px;
-  position: relative;
-  overflow: hidden;
-  .login_right {
-    padding: 20px 30px 20px 30px;
-    position: absolute;
-    background: #17212e;
-    width: 350px;
-    height: 330px;
-    left: 50%;
-    top: 50%;
-    margin-left: -175px;
-    margin-top: -165px;
-    border-top: 4px solid #f0ac19;
-    border-radius: 5px;
-    form.ivu-form.ivu-form-label-right.ivu-form-inline {
-      .login_title{
-        height: 70px;
-        color: #fff;
-      }
-      .ivu-form-item {
-        .ivu-form-item-content {
-          .login_btn.ivu-btn {
-            width: 100%;
-            background-color: #f0ac19;
-            outline: none;
-            border-color: #f0ac19;
-            color: #fff;
-            font-size: 18px;
-            border-radius: 5px;
-            &:focus {
-              -moz-box-shadow: 0px 0px 0px #fff, 0px 0px 0px #fff;
-              -webkit-box-shadow: 0px 0px 0px #fff, 0px 0px 0px #fff;
-              box-shadow: 0px 0px 0px #fff, 0px 0px 0px #fff;
-            }
-          }
-        }
-      }
-    }
-  }
-  .to_register {
-    overflow: hidden;
-    font-size: 12px;
-    span {
-      float: left;
-    }
-    a {
-      float: right;
-      color: #f0ac19;
-    }
-  }
-}
-#captcha {
-  width: 100%;
-  display: inline-block;
-}
-.show {
-  display: block;
-}
-.hide {
-  display: none;
-}
-#notice {
-  color: red;
-}
-#wait {
-  text-align: left;
-  color: #666;
-  margin: 0;
-}
-.geetest_wait_dot geetest_dot_1 {
-  color: red;
-}
-.user .ivu-btn,
-.ivu-btn:active,
-.ivu-btn:focus {
-  border-color: #d7dde4;
-  box-shadow: none;
-}
-/*  */
-</style>
 <script>
 import gtInit from "../../assets/js/gt.js";
 import $ from "jquery";
@@ -295,16 +205,10 @@ export default {
             .ivu-input {
               background-color:transparent;
               font-size: 14px;
-              border: none;
-              border-bottom: 1px solid #27313e;
-              border-radius:0;
-              // color:#fff;
+              border: 1px solid #DDDDDD;;
+              border-radius: 5px;
               &:focus {
-                border: none;
-                border-bottom: 1px solid #27313e;
-                -moz-box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
-                -webkit-box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
-                box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
+                border: 1px solid #0ECBBD;
               }
             }
           }
@@ -347,4 +251,93 @@ export default {
     width: 30px;
     text-align: left;
   }
+</style>
+
+<style scoped lang="scss">
+  /* 验证码 */
+  .login_form {
+    /*background: #0b1520 url(../../assets/images/login_bg.png) no-repeat center center;*/
+    background: linear-gradient(180deg, #0F0E0E 0%, #373636 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    .login_right {
+      padding: 20px 30px 20px 30px;
+      position: absolute;
+      background: #ffffff;
+      width: 350px;
+      height: 330px;
+      left: 50%;
+      top: 50%;
+      margin-left: -175px;
+      margin-top: -165px;
+      /*border-top: 4px solid #f0ac19;*/
+      border-radius: 5px;
+      form.ivu-form.ivu-form-label-right.ivu-form-inline {
+        .login_title{
+          height: 70px;
+          color: #000000;
+        }
+        .ivu-form-item {
+          .ivu-form-item-content {
+            .login_btn.ivu-btn {
+              width: 100%;
+              background-color: #4364EE;
+              outline: none;
+              border-color: #4364EE;
+              color: #fff;
+              font-size: 18px;
+              border-radius: 5px;
+              &:focus {
+                -moz-box-shadow: 0px 0px 0px #fff, 0px 0px 0px #fff;
+                -webkit-box-shadow: 0px 0px 0px #fff, 0px 0px 0px #fff;
+                box-shadow: 0px 0px 0px #fff, 0px 0px 0px #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+    .to_register {
+      display: flex;
+      justify-content: space-between;
+      overflow: hidden;
+      font-size: 12px;
+      a {
+        color:#979797;
+        font-size:12px;
+      }
+    }
+  }
+  #captcha {
+    width: 100%;
+    display: inline-block;
+  }
+  .show {
+    display: block;
+  }
+  .hide {
+    display: none;
+  }
+  #notice {
+    color: red;
+  }
+  #wait {
+    text-align: left;
+    color: #666;
+    margin: 0;
+  }
+  .geetest_wait_dot geetest_dot_1 {
+    color: red;
+  }
+  .user .ivu-btn,
+  .ivu-btn:active,
+  .ivu-btn:focus {
+    border-color: #d7dde4;
+    box-shadow: none;
+  }
+  /*  */
 </style>
