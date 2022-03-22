@@ -187,6 +187,26 @@
           </ul>
         </div>
       </div>
+
+      <div id="page4">
+        <div class="wrap">
+          <div class="container-left">
+            <img src="../../assets/icon1/home_10.png">
+            <img src="../../assets/icon1/home_11.png">
+          </div>
+          <div class="container-right">
+            <span>随时随地，开启交易</span>
+            <span>UCOIN APP 现已开放下载</span>
+            <div>
+              <div class="left">
+                <div class="button"><span class="iconfont icon-ios"></span><span>IOS扫码下载</span></div>
+                <div class="button"><span class="iconfont icon-android"></span><span>Android下载</span></div>
+              </div>
+              <vue-qr :text="androidDownloadUrl" :size="100" margin="4" class="right"></vue-qr>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -1641,6 +1661,77 @@ export default {
         span {
           width: 60%;
           margin: auto;
+        }
+      }
+    }
+  }
+}
+#page4 {
+  background: #171717;
+  overflow: hidden;
+  .wrap {
+    width: 1200px;
+    margin: 130px auto 80px auto;
+    overflow: hidden;
+    .container-left {
+      background: url("../../assets/icon1/home_9.png") no-repeat bottom center;
+      background-size: 80%;
+      float: left;
+      overflow: hidden;
+      margin: 0 286px 0 45px;
+      img:first-child {
+        margin-right: 9px;
+      }
+      img {
+        width: 130px;
+        margin-bottom: 35px;
+      }
+    }
+    .container-right {
+      float: left;
+      &>span:nth-child(1) {
+        display: block;
+        font-size: 24px;
+        font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+        font-weight: 400;
+        color: #FFFFFF;
+        margin-bottom: 15px;
+      }
+      &>span:nth-child(2) {
+        display: block;
+        font-size: 14px;
+        font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+        font-weight: 400;
+        color: #FFFFFF;
+        margin-bottom: 30px;
+      }
+      //扫码下载
+      &>div:nth-child(3) {
+        .left {
+          float: left;
+          margin-right: 30px;
+          height: 100px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .button {
+            cursor: pointer;
+            vertical-align: middle;
+            display: block;
+            width: fit-content;
+            font-size: 14px;
+            padding: 4px 10px;
+            border: 1px solid #FFFFFF;
+            border-radius: 6px;
+            overflow: hidden;
+            .iconfont {
+              font-size: 18px;
+              margin-right: 5px;
+            }
+          }
+        }
+        .right {
+          float: right;
         }
       }
     }

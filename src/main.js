@@ -12,6 +12,7 @@ import 'iview/dist/styles/iview.css';
 import util from './assets/js/util.js';
 import 'swiper/dist/css/swiper.css';
 import './assets/icons/iconfont.css';
+import './assets/icon/iconfont.css';
 import App from './App.vue';
 import Api from './config/api';
 import $ from '@js/jquery.min.js';
